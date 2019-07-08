@@ -1,0 +1,738 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1878DB1022D3248500849B37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB0F22D3248500849B37 /* AppDelegate.m */; };
+		1878DB1322D3248500849B37 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB1222D3248500849B37 /* ViewController.m */; };
+		1878DB1622D3248500849B37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1878DB1422D3248500849B37 /* Main.storyboard */; };
+		1878DB1822D3248600849B37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1878DB1722D3248600849B37 /* Assets.xcassets */; };
+		1878DB1B22D3248600849B37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1878DB1922D3248600849B37 /* LaunchScreen.storyboard */; };
+		1878DB1E22D3248600849B37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB1D22D3248600849B37 /* main.m */; };
+		1878DB2822D3248600849B37 /* DVSocketHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB2722D3248600849B37 /* DVSocketHelperTests.m */; };
+		1878DB3322D3248600849B37 /* DVSocketHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB3222D3248600849B37 /* DVSocketHelperUITests.m */; };
+		1878DB4A22D324F000849B37 /* EasyImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB4122D324F000849B37 /* EasyImagePickerManager.m */; };
+		1878DB4B22D324F000849B37 /* DVSocketConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB4522D324F000849B37 /* DVSocketConfig.m */; };
+		1878DB4C22D324F000849B37 /* DVDataProgressInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB4622D324F000849B37 /* DVDataProgressInfo.m */; };
+		1878DB4D22D324F000849B37 /* DVSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB4722D324F000849B37 /* DVSocketManager.m */; };
+		264FE06CB0C1F7797A7D7196 /* libPods-DVSocketHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A41E1802FA0ACC520FF38936 /* libPods-DVSocketHelper.a */; };
+		547D68BA9DA42FF5A6CF1C0F /* libPods-DVSocketHelperUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1ABCD674973F5864E72E244 /* libPods-DVSocketHelperUITests.a */; };
+		5C11CE0B2E9243262F404EB8 /* libPods-DVSocketHelperTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AA165AF983650066C2D4322 /* libPods-DVSocketHelperTests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1878DB2422D3248600849B37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1878DB0322D3248500849B37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1878DB0A22D3248500849B37;
+			remoteInfo = DVSocketHelper;
+		};
+		1878DB2F22D3248600849B37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1878DB0322D3248500849B37 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1878DB0A22D3248500849B37;
+			remoteInfo = DVSocketHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1878DB0B22D3248500849B37 /* DVSocketHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVSocketHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1878DB0E22D3248500849B37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1878DB0F22D3248500849B37 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1878DB1122D3248500849B37 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1878DB1222D3248500849B37 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1878DB1522D3248500849B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1878DB1722D3248600849B37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1878DB1A22D3248600849B37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1878DB1C22D3248600849B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1878DB1D22D3248600849B37 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1878DB2322D3248600849B37 /* DVSocketHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVSocketHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1878DB2722D3248600849B37 /* DVSocketHelperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DVSocketHelperTests.m; sourceTree = "<group>"; };
+		1878DB2922D3248600849B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1878DB2E22D3248600849B37 /* DVSocketHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVSocketHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1878DB3222D3248600849B37 /* DVSocketHelperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DVSocketHelperUITests.m; sourceTree = "<group>"; };
+		1878DB3422D3248600849B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1878DB4122D324F000849B37 /* EasyImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyImagePickerManager.m; sourceTree = "<group>"; };
+		1878DB4222D324F000849B37 /* EasyImagePickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyImagePickerManager.h; sourceTree = "<group>"; };
+		1878DB4422D324F000849B37 /* DVSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVSocketManager.h; sourceTree = "<group>"; };
+		1878DB4522D324F000849B37 /* DVSocketConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVSocketConfig.m; sourceTree = "<group>"; };
+		1878DB4622D324F000849B37 /* DVDataProgressInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVDataProgressInfo.m; sourceTree = "<group>"; };
+		1878DB4722D324F000849B37 /* DVSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVSocketManager.m; sourceTree = "<group>"; };
+		1878DB4822D324F000849B37 /* DVSocketConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVSocketConfig.h; sourceTree = "<group>"; };
+		1878DB4922D324F000849B37 /* DVDataProgressInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDataProgressInfo.h; sourceTree = "<group>"; };
+		27FD2C4703823A34E231B79D /* Pods-DVSocketHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVSocketHelper.debug.xcconfig"; path = "Target Support Files/Pods-DVSocketHelper/Pods-DVSocketHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		3176A424E93056C5884E1DF5 /* Pods-DVSocketHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVSocketHelper.release.xcconfig"; path = "Target Support Files/Pods-DVSocketHelper/Pods-DVSocketHelper.release.xcconfig"; sourceTree = "<group>"; };
+		7AA165AF983650066C2D4322 /* libPods-DVSocketHelperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DVSocketHelperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BC3A3ED04BD8A6BE2EA28B1 /* Pods-DVSocketHelperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVSocketHelperTests.debug.xcconfig"; path = "Target Support Files/Pods-DVSocketHelperTests/Pods-DVSocketHelperTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E11EBA3E9B1693C773BC37D /* Pods-DVSocketHelperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVSocketHelperUITests.debug.xcconfig"; path = "Target Support Files/Pods-DVSocketHelperUITests/Pods-DVSocketHelperUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A41E1802FA0ACC520FF38936 /* libPods-DVSocketHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DVSocketHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF453FBB36F21DA32085703F /* Pods-DVSocketHelperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVSocketHelperTests.release.xcconfig"; path = "Target Support Files/Pods-DVSocketHelperTests/Pods-DVSocketHelperTests.release.xcconfig"; sourceTree = "<group>"; };
+		DA9782E4C6BCA9CE5714E782 /* Pods-DVSocketHelperUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVSocketHelperUITests.release.xcconfig"; path = "Target Support Files/Pods-DVSocketHelperUITests/Pods-DVSocketHelperUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E1ABCD674973F5864E72E244 /* libPods-DVSocketHelperUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DVSocketHelperUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1878DB0822D3248500849B37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				264FE06CB0C1F7797A7D7196 /* libPods-DVSocketHelper.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1878DB2022D3248600849B37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C11CE0B2E9243262F404EB8 /* libPods-DVSocketHelperTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1878DB2B22D3248600849B37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				547D68BA9DA42FF5A6CF1C0F /* libPods-DVSocketHelperUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1878DB0222D3248500849B37 = {
+			isa = PBXGroup;
+			children = (
+				1878DB0D22D3248500849B37 /* DVSocketHelper */,
+				1878DB2622D3248600849B37 /* DVSocketHelperTests */,
+				1878DB3122D3248600849B37 /* DVSocketHelperUITests */,
+				1878DB0C22D3248500849B37 /* Products */,
+				FBFFCF21CB28B50B3BD77F38 /* Pods */,
+				6E52044840A8AEF236318F3A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1878DB0C22D3248500849B37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1878DB0B22D3248500849B37 /* DVSocketHelper.app */,
+				1878DB2322D3248600849B37 /* DVSocketHelperTests.xctest */,
+				1878DB2E22D3248600849B37 /* DVSocketHelperUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1878DB0D22D3248500849B37 /* DVSocketHelper */ = {
+			isa = PBXGroup;
+			children = (
+				1878DB4322D324F000849B37 /* DVSocketManager */,
+				1878DB4022D324F000849B37 /* Utils */,
+				1878DB0E22D3248500849B37 /* AppDelegate.h */,
+				1878DB0F22D3248500849B37 /* AppDelegate.m */,
+				1878DB1122D3248500849B37 /* ViewController.h */,
+				1878DB1222D3248500849B37 /* ViewController.m */,
+				1878DB1422D3248500849B37 /* Main.storyboard */,
+				1878DB1722D3248600849B37 /* Assets.xcassets */,
+				1878DB1922D3248600849B37 /* LaunchScreen.storyboard */,
+				1878DB1C22D3248600849B37 /* Info.plist */,
+				1878DB1D22D3248600849B37 /* main.m */,
+			);
+			path = DVSocketHelper;
+			sourceTree = "<group>";
+		};
+		1878DB2622D3248600849B37 /* DVSocketHelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				1878DB2722D3248600849B37 /* DVSocketHelperTests.m */,
+				1878DB2922D3248600849B37 /* Info.plist */,
+			);
+			path = DVSocketHelperTests;
+			sourceTree = "<group>";
+		};
+		1878DB3122D3248600849B37 /* DVSocketHelperUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1878DB3222D3248600849B37 /* DVSocketHelperUITests.m */,
+				1878DB3422D3248600849B37 /* Info.plist */,
+			);
+			path = DVSocketHelperUITests;
+			sourceTree = "<group>";
+		};
+		1878DB4022D324F000849B37 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1878DB4222D324F000849B37 /* EasyImagePickerManager.h */,
+				1878DB4122D324F000849B37 /* EasyImagePickerManager.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		1878DB4322D324F000849B37 /* DVSocketManager */ = {
+			isa = PBXGroup;
+			children = (
+				1878DB4422D324F000849B37 /* DVSocketManager.h */,
+				1878DB4722D324F000849B37 /* DVSocketManager.m */,
+				1878DB4822D324F000849B37 /* DVSocketConfig.h */,
+				1878DB4522D324F000849B37 /* DVSocketConfig.m */,
+				1878DB4922D324F000849B37 /* DVDataProgressInfo.h */,
+				1878DB4622D324F000849B37 /* DVDataProgressInfo.m */,
+			);
+			path = DVSocketManager;
+			sourceTree = "<group>";
+		};
+		6E52044840A8AEF236318F3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A41E1802FA0ACC520FF38936 /* libPods-DVSocketHelper.a */,
+				7AA165AF983650066C2D4322 /* libPods-DVSocketHelperTests.a */,
+				E1ABCD674973F5864E72E244 /* libPods-DVSocketHelperUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FBFFCF21CB28B50B3BD77F38 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27FD2C4703823A34E231B79D /* Pods-DVSocketHelper.debug.xcconfig */,
+				3176A424E93056C5884E1DF5 /* Pods-DVSocketHelper.release.xcconfig */,
+				7BC3A3ED04BD8A6BE2EA28B1 /* Pods-DVSocketHelperTests.debug.xcconfig */,
+				AF453FBB36F21DA32085703F /* Pods-DVSocketHelperTests.release.xcconfig */,
+				8E11EBA3E9B1693C773BC37D /* Pods-DVSocketHelperUITests.debug.xcconfig */,
+				DA9782E4C6BCA9CE5714E782 /* Pods-DVSocketHelperUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1878DB0A22D3248500849B37 /* DVSocketHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1878DB3722D3248600849B37 /* Build configuration list for PBXNativeTarget "DVSocketHelper" */;
+			buildPhases = (
+				62D7054D66B04CE88710A57C /* [CP] Check Pods Manifest.lock */,
+				1878DB0722D3248500849B37 /* Sources */,
+				1878DB0822D3248500849B37 /* Frameworks */,
+				1878DB0922D3248500849B37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DVSocketHelper;
+			productName = DVSocketHelper;
+			productReference = 1878DB0B22D3248500849B37 /* DVSocketHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1878DB2222D3248600849B37 /* DVSocketHelperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1878DB3A22D3248600849B37 /* Build configuration list for PBXNativeTarget "DVSocketHelperTests" */;
+			buildPhases = (
+				06399348FD3117C1DC1A2D18 /* [CP] Check Pods Manifest.lock */,
+				1878DB1F22D3248600849B37 /* Sources */,
+				1878DB2022D3248600849B37 /* Frameworks */,
+				1878DB2122D3248600849B37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1878DB2522D3248600849B37 /* PBXTargetDependency */,
+			);
+			name = DVSocketHelperTests;
+			productName = DVSocketHelperTests;
+			productReference = 1878DB2322D3248600849B37 /* DVSocketHelperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1878DB2D22D3248600849B37 /* DVSocketHelperUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1878DB3D22D3248600849B37 /* Build configuration list for PBXNativeTarget "DVSocketHelperUITests" */;
+			buildPhases = (
+				5FBF7A894BC78EDA9BA9B60C /* [CP] Check Pods Manifest.lock */,
+				1878DB2A22D3248600849B37 /* Sources */,
+				1878DB2B22D3248600849B37 /* Frameworks */,
+				1878DB2C22D3248600849B37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1878DB3022D3248600849B37 /* PBXTargetDependency */,
+			);
+			name = DVSocketHelperUITests;
+			productName = DVSocketHelperUITests;
+			productReference = 1878DB2E22D3248600849B37 /* DVSocketHelperUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1878DB0322D3248500849B37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = devil;
+				TargetAttributes = {
+					1878DB0A22D3248500849B37 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					1878DB2222D3248600849B37 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 1878DB0A22D3248500849B37;
+					};
+					1878DB2D22D3248600849B37 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 1878DB0A22D3248500849B37;
+					};
+				};
+			};
+			buildConfigurationList = 1878DB0622D3248500849B37 /* Build configuration list for PBXProject "DVSocketHelper" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1878DB0222D3248500849B37;
+			productRefGroup = 1878DB0C22D3248500849B37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1878DB0A22D3248500849B37 /* DVSocketHelper */,
+				1878DB2222D3248600849B37 /* DVSocketHelperTests */,
+				1878DB2D22D3248600849B37 /* DVSocketHelperUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1878DB0922D3248500849B37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1878DB1B22D3248600849B37 /* LaunchScreen.storyboard in Resources */,
+				1878DB1822D3248600849B37 /* Assets.xcassets in Resources */,
+				1878DB1622D3248500849B37 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1878DB2122D3248600849B37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1878DB2C22D3248600849B37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06399348FD3117C1DC1A2D18 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DVSocketHelperTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FBF7A894BC78EDA9BA9B60C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DVSocketHelperUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62D7054D66B04CE88710A57C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DVSocketHelper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1878DB0722D3248500849B37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1878DB4C22D324F000849B37 /* DVDataProgressInfo.m in Sources */,
+				1878DB1322D3248500849B37 /* ViewController.m in Sources */,
+				1878DB4B22D324F000849B37 /* DVSocketConfig.m in Sources */,
+				1878DB4A22D324F000849B37 /* EasyImagePickerManager.m in Sources */,
+				1878DB1E22D3248600849B37 /* main.m in Sources */,
+				1878DB1022D3248500849B37 /* AppDelegate.m in Sources */,
+				1878DB4D22D324F000849B37 /* DVSocketManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1878DB1F22D3248600849B37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1878DB2822D3248600849B37 /* DVSocketHelperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1878DB2A22D3248600849B37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1878DB3322D3248600849B37 /* DVSocketHelperUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1878DB2522D3248600849B37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1878DB0A22D3248500849B37 /* DVSocketHelper */;
+			targetProxy = 1878DB2422D3248600849B37 /* PBXContainerItemProxy */;
+		};
+		1878DB3022D3248600849B37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1878DB0A22D3248500849B37 /* DVSocketHelper */;
+			targetProxy = 1878DB2F22D3248600849B37 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1878DB1422D3248500849B37 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1878DB1522D3248500849B37 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1878DB1922D3248600849B37 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1878DB1A22D3248600849B37 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1878DB3522D3248600849B37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1878DB3622D3248600849B37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1878DB3822D3248600849B37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27FD2C4703823A34E231B79D /* Pods-DVSocketHelper.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVSocketHelper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devil.DVSocketHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1878DB3922D3248600849B37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3176A424E93056C5884E1DF5 /* Pods-DVSocketHelper.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVSocketHelper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devil.DVSocketHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1878DB3B22D3248600849B37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BC3A3ED04BD8A6BE2EA28B1 /* Pods-DVSocketHelperTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVSocketHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devil.DVSocketHelperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DVSocketHelper.app/DVSocketHelper";
+			};
+			name = Debug;
+		};
+		1878DB3C22D3248600849B37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF453FBB36F21DA32085703F /* Pods-DVSocketHelperTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVSocketHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devil.DVSocketHelperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DVSocketHelper.app/DVSocketHelper";
+			};
+			name = Release;
+		};
+		1878DB3E22D3248600849B37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E11EBA3E9B1693C773BC37D /* Pods-DVSocketHelperUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVSocketHelperUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devil.DVSocketHelperUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DVSocketHelper;
+			};
+			name = Debug;
+		};
+		1878DB3F22D3248600849B37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA9782E4C6BCA9CE5714E782 /* Pods-DVSocketHelperUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DVSocketHelperUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devil.DVSocketHelperUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DVSocketHelper;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1878DB0622D3248500849B37 /* Build configuration list for PBXProject "DVSocketHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1878DB3522D3248600849B37 /* Debug */,
+				1878DB3622D3248600849B37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1878DB3722D3248600849B37 /* Build configuration list for PBXNativeTarget "DVSocketHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1878DB3822D3248600849B37 /* Debug */,
+				1878DB3922D3248600849B37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1878DB3A22D3248600849B37 /* Build configuration list for PBXNativeTarget "DVSocketHelperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1878DB3B22D3248600849B37 /* Debug */,
+				1878DB3C22D3248600849B37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1878DB3D22D3248600849B37 /* Build configuration list for PBXNativeTarget "DVSocketHelperUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1878DB3E22D3248600849B37 /* Debug */,
+				1878DB3F22D3248600849B37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1878DB0322D3248500849B37 /* Project object */;
+}
