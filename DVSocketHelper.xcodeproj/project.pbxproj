@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		186FCDCC2328EBDF00E18C0C /* QuickImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FCDCA2328EBDF00E18C0C /* QuickImagePickerManager.m */; };
+		186FCDCD2328EBDF00E18C0C /* NSObject+QuickImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FCDCB2328EBDF00E18C0C /* NSObject+QuickImagePicker.m */; };
 		1878DB1022D3248500849B37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB0F22D3248500849B37 /* AppDelegate.m */; };
 		1878DB1322D3248500849B37 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB1222D3248500849B37 /* ViewController.m */; };
 		1878DB1622D3248500849B37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1878DB1422D3248500849B37 /* Main.storyboard */; };
@@ -15,9 +17,7 @@
 		1878DB1E22D3248600849B37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB1D22D3248600849B37 /* main.m */; };
 		1878DB2822D3248600849B37 /* DVSocketHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB2722D3248600849B37 /* DVSocketHelperTests.m */; };
 		1878DB3322D3248600849B37 /* DVSocketHelperUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB3222D3248600849B37 /* DVSocketHelperUITests.m */; };
-		1878DB4A22D324F000849B37 /* EasyImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB4122D324F000849B37 /* EasyImagePickerManager.m */; };
 		1878DB4B22D324F000849B37 /* DVSocketConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB4522D324F000849B37 /* DVSocketConfig.m */; };
-		1878DB4C22D324F000849B37 /* DVDataProgressInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB4622D324F000849B37 /* DVDataProgressInfo.m */; };
 		1878DB4D22D324F000849B37 /* DVSocketManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DB4722D324F000849B37 /* DVSocketManager.m */; };
 		264FE06CB0C1F7797A7D7196 /* libPods-DVSocketHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A41E1802FA0ACC520FF38936 /* libPods-DVSocketHelper.a */; };
 		547D68BA9DA42FF5A6CF1C0F /* libPods-DVSocketHelperUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1ABCD674973F5864E72E244 /* libPods-DVSocketHelperUITests.a */; };
@@ -42,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		186FCDC82328EBDF00E18C0C /* NSObject+QuickImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+QuickImagePicker.h"; sourceTree = "<group>"; };
+		186FCDC92328EBDF00E18C0C /* QuickImagePickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickImagePickerManager.h; sourceTree = "<group>"; };
+		186FCDCA2328EBDF00E18C0C /* QuickImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickImagePickerManager.m; sourceTree = "<group>"; };
+		186FCDCB2328EBDF00E18C0C /* NSObject+QuickImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+QuickImagePicker.m"; sourceTree = "<group>"; };
 		1878DB0B22D3248500849B37 /* DVSocketHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVSocketHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1878DB0E22D3248500849B37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1878DB0F22D3248500849B37 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,14 +62,10 @@
 		1878DB2E22D3248600849B37 /* DVSocketHelperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVSocketHelperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1878DB3222D3248600849B37 /* DVSocketHelperUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DVSocketHelperUITests.m; sourceTree = "<group>"; };
 		1878DB3422D3248600849B37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1878DB4122D324F000849B37 /* EasyImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EasyImagePickerManager.m; sourceTree = "<group>"; };
-		1878DB4222D324F000849B37 /* EasyImagePickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyImagePickerManager.h; sourceTree = "<group>"; };
 		1878DB4422D324F000849B37 /* DVSocketManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVSocketManager.h; sourceTree = "<group>"; };
 		1878DB4522D324F000849B37 /* DVSocketConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVSocketConfig.m; sourceTree = "<group>"; };
-		1878DB4622D324F000849B37 /* DVDataProgressInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVDataProgressInfo.m; sourceTree = "<group>"; };
 		1878DB4722D324F000849B37 /* DVSocketManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVSocketManager.m; sourceTree = "<group>"; };
 		1878DB4822D324F000849B37 /* DVSocketConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVSocketConfig.h; sourceTree = "<group>"; };
-		1878DB4922D324F000849B37 /* DVDataProgressInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDataProgressInfo.h; sourceTree = "<group>"; };
 		27FD2C4703823A34E231B79D /* Pods-DVSocketHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVSocketHelper.debug.xcconfig"; path = "Target Support Files/Pods-DVSocketHelper/Pods-DVSocketHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		3176A424E93056C5884E1DF5 /* Pods-DVSocketHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVSocketHelper.release.xcconfig"; path = "Target Support Files/Pods-DVSocketHelper/Pods-DVSocketHelper.release.xcconfig"; sourceTree = "<group>"; };
 		7AA165AF983650066C2D4322 /* libPods-DVSocketHelperTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DVSocketHelperTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,8 +166,10 @@
 		1878DB4022D324F000849B37 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				1878DB4222D324F000849B37 /* EasyImagePickerManager.h */,
-				1878DB4122D324F000849B37 /* EasyImagePickerManager.m */,
+				186FCDC82328EBDF00E18C0C /* NSObject+QuickImagePicker.h */,
+				186FCDCB2328EBDF00E18C0C /* NSObject+QuickImagePicker.m */,
+				186FCDC92328EBDF00E18C0C /* QuickImagePickerManager.h */,
+				186FCDCA2328EBDF00E18C0C /* QuickImagePickerManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -179,8 +181,6 @@
 				1878DB4722D324F000849B37 /* DVSocketManager.m */,
 				1878DB4822D324F000849B37 /* DVSocketConfig.h */,
 				1878DB4522D324F000849B37 /* DVSocketConfig.m */,
-				1878DB4922D324F000849B37 /* DVDataProgressInfo.h */,
-				1878DB4622D324F000849B37 /* DVDataProgressInfo.m */,
 			);
 			path = DVSocketManager;
 			sourceTree = "<group>";
@@ -410,11 +410,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1878DB4C22D324F000849B37 /* DVDataProgressInfo.m in Sources */,
 				1878DB1322D3248500849B37 /* ViewController.m in Sources */,
 				1878DB4B22D324F000849B37 /* DVSocketConfig.m in Sources */,
-				1878DB4A22D324F000849B37 /* EasyImagePickerManager.m in Sources */,
 				1878DB1E22D3248600849B37 /* main.m in Sources */,
+				186FCDCD2328EBDF00E18C0C /* NSObject+QuickImagePicker.m in Sources */,
+				186FCDCC2328EBDF00E18C0C /* QuickImagePickerManager.m in Sources */,
 				1878DB1022D3248500849B37 /* AppDelegate.m in Sources */,
 				1878DB4D22D324F000849B37 /* DVSocketManager.m in Sources */,
 			);

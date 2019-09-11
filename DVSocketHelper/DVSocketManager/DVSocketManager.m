@@ -41,9 +41,9 @@
 @property (nonatomic,strong) DVSocketConfig *config;
 
 //发送文件时，文件总长度
-@property (nonatomic,assign) NSUInteger sendFileTotalLength;
+@property (nonatomic,assign) NSUInteger sendDataTotalLength;
 //发送文件时，当前已经发送数据的长度
-@property (nonatomic,assign) NSUInteger sendFileCurrentLength;
+@property (nonatomic,assign) NSUInteger sendDataCurrentLength;
 //当前发送数据的类型(DV_WriteFileData||DV_WriteOtherData)
 @property (nonatomic,assign) DVActionCode sendDataType;
 @end
@@ -178,8 +178,7 @@ static DVSocketManager *manager;
     return ^(){
         NSError *error;
         if (!self.address || [self.address isEqualToString:@""] || !self.port) {
-            error = [NSError errorWithDomain:@"连接地址或端口不能为空" code:DV_InputError userInfo:nil];
-            SafeBlockCall(self.errorCallBack,DV_ConnectError,[error localizedDescription]);
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"连接地址或端口不能为空");
             return self;
         }
         if(self.isConnected()){
@@ -192,6 +191,90 @@ static DVSocketManager *manager;
             SafeBlockCall(self.errorCallBack,DV_ConnectError,[error localizedDescription]);
         }else if(self.actionCallBack){
         SafeBlockCall(self.actionCallBack,DV_StartConnect,self,@{@"action":@"startConnect",@"address":self.address,@"port":[NSNumber numberWithInt:self.port]});
+        }
+        return self;
+    };
+}
+
+//作为主机监听端口
+-(DVSocketManager *(^)(uint16_t port)) acceptOnPort
+{
+    return ^(uint16_t port){
+        if (!port) {
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"监听端口不能为空");
+            return self;
+        }
+        if(self.isConnected()){
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"已经连接服务器，请先断开再连接。");
+            return self;
+        }
+        NSError *error;
+        [self.clientSocket acceptOnPort:port error:&error];
+        if (error) {
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,[error localizedDescription]);
+        }
+        return self;
+    };
+}
+
+//作为主机监听端口,端口为已设置的端口
+-(DVSocketManager *(^)(void)) acceptOnCurrentSettingPort
+{
+    return ^(){
+        if (!self.port) {
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"监听端口不能为空");
+            return self;
+        }
+        if(self.isConnected()){
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"已经连接服务器，请先断开再连接。");
+            return self;
+        }
+        NSError *error;
+        [self.clientSocket acceptOnPort:self.port error:&error];
+        if (error) {
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,[error localizedDescription]);
+        }
+        return self;
+    };
+}
+
+//作为主机监听端口
+-(DVSocketManager *(^)(NSString *interface,uint16_t port)) acceptOnInterface
+{
+    return ^(NSString *interface,uint16_t port){
+        if (!port) {
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"监听端口不能为空");
+            return self;
+        }
+        if(self.isConnected()){
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"已经连接服务器，请先断开再连接。");
+            return self;
+        }
+        NSError *error;
+        [self.clientSocket acceptOnInterface:interface port:port error:&error];
+        if (error) {
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,[error localizedDescription]);
+        }
+        return self;
+    };
+}
+
+//作为主机监听端口
+-(DVSocketManager *(^)(NSURL *url,uint16_t port)) acceptOnUrl;
+{
+    return ^(NSURL *url,uint16_t port){
+        if (!port) {
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"监听端口不能为空");
+            return self;
+        }
+        if(self.isConnected()){
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"已经连接服务器，请先断开再连接。");
+            return self;
+        }
+        NSError *error;
+        [self.clientSocket acceptOnUrl:url error:&error];
+        if (error) {
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,[error localizedDescription]);
         }
         return self;
     };
@@ -224,21 +307,20 @@ static DVSocketManager *manager;
 {
     return ^(NSData *content,long tag){
         if(!self.isConnected()){
-            if (self.errorCallBack) {
-               SafeBlockCall(self.errorCallBack,DV_ConnectError,@"请先连接服务器");
-            }
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"请先连接服务器");
             return self;
-        }else if ([content length] == 0) {
+        }else if (!content || [content length] == 0) {
             SafeBlockCall(self.errorCallBack,DV_InputError,@"输入的数据为空");
             return self;
         }
         if ([content isKindOfClass:[NSData class]]) {
-            self.sendFileTotalLength = [content length];
-            self.sendFileCurrentLength = 0;
+            self.sendDataTotalLength = [content length];
+            self.sendDataCurrentLength = 0;
             self.sendDataType = DV_WriteFileData;
             [self.clientSocket writeData:content withTimeout:self.config.writeDataTimeout tag:tag];
         }else if([content isKindOfClass:[NSString class]]){
             self.sendDataType = DV_WriteOtherData;
+            self.sendDataTotalLength = [content length];
             [self.clientSocket writeData:[(NSString *)[self getFormatWriteData:content] dataUsingEncoding:NSUTF8StringEncoding] withTimeout:self.config.writeDataTimeout tag:tag];
         }else if([content isKindOfClass:[NSNumber class]]){
             self.sendDataType = DV_WriteOtherData;
@@ -247,6 +329,44 @@ static DVSocketManager *manager;
             return self;
         }
         
+        return self;
+    };
+}
+
+//写文件数据
+-(DVSocketManager *(^)(NSData *fileData,long tag)) writeFileWithData
+{
+    return ^(NSData *fileData,long tag){
+        if(!self.isConnected()){
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"请先连接服务器");
+            return self;
+        }else if (!fileData || [fileData length] == 0) {
+            SafeBlockCall(self.errorCallBack,DV_InputError,@"输入的数据为空");
+            return self;
+        }
+        self.sendDataTotalLength = [fileData length];
+        self.sendDataCurrentLength = 0;
+        self.sendDataType = DV_WriteFileData;
+        [self.clientSocket writeData:fileData withTimeout:self.config.writeDataTimeout tag:tag];
+        return self;
+    };
+}
+//写文件数据
+-(DVSocketManager *(^)(NSString *path,long tag)) writeFileWithPath
+{
+    return ^(NSString *path,long tag){
+        if(!self.isConnected()){
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"请先连接服务器");
+            return self;
+        }else if (!path || [path length] == 0) {
+            SafeBlockCall(self.errorCallBack,DV_InputError,@"输入的数据为空");
+            return self;
+        }
+        NSData *fileData = [NSData dataWithContentsOfFile:path];
+        self.sendDataTotalLength = [fileData length];
+        self.sendDataCurrentLength = 0;
+        self.sendDataType = DV_WriteFileData;
+        [self.clientSocket writeData:fileData withTimeout:self.config.writeDataTimeout tag:tag];
         return self;
     };
 }
@@ -287,7 +407,7 @@ static DVSocketManager *manager;
 {
     return ^(){
         if (![self.clientSocket isConnected]) {
-            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"请先连接服务器");
+            SafeBlockCall(self.errorCallBack,DV_ConnectError,@"当前没有连接的服务器，无须关闭。");
         }
         [self.clientSocket disconnect];
         return self;
@@ -372,7 +492,7 @@ SafeBlockCall(self.actionCallBack,DV_ConnectSuccess,self,@{@"action":@"didConnec
 {
     NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     DVLog(@"客户端收到-->%@",content);
-    SafeBlockCall(self.readDataCallBack,DV_ReadDataSuccess,self,@{@"data":data},tag);
+    SafeBlockCall(self.readDataCallBack,DV_ReadDataSuccess,self,[data length],data,tag);
 }
 
 /**
@@ -383,7 +503,7 @@ SafeBlockCall(self.actionCallBack,DV_ConnectSuccess,self,@{@"action":@"didConnec
 - (void)socket:(GCDAsyncSocket *)sock didReadPartialDataOfLength:(NSUInteger)partialLength tag:(long)tag
 {
     DVLog(@"didReadPartialDataOfLength");
-    SafeBlockCall(self.readDataCallBack,DV_DidReadPartialDataOfLength,self,@{@"partialLength":[NSNumber numberWithUnsignedInteger:partialLength]},tag);
+    SafeBlockCall(self.readDataCallBack,DV_ReadData,self,partialLength,nil,tag);
 }
 
 /**
@@ -392,18 +512,18 @@ SafeBlockCall(self.actionCallBack,DV_ConnectSuccess,self,@{@"action":@"didConnec
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
     DVLog(@"didWriteDataWithTag");
+    //数据写出成功回调
+    SafeBlockCall(self.writeDataCallBack,self.sendDataType & DV_WriteFileData ? DV_WriteFileDataSuccess : DV_WriteOtherDataSuccess, self,self.sendDataTotalLength,self.sendDataTotalLength, tag);
     //是否需要在每次写数据后读取数据
     if (self.config.isAfterAnySendDataToReadData) {
         [self.clientSocket readDataWithTimeout:self.config.readDataTimeout tag:tag];
     }
-    //数据写出成功回调
-    SafeBlockCall(self.writeDataCallBack,DV_WriteDataSuccess | self.sendDataType, self,nil, tag);
     //如果是发送文件完成，重置文件总长度
-    if (self.sendFileTotalLength) {
-        self.sendFileTotalLength = 0;
+    if (self.sendDataTotalLength) {
+        self.sendDataTotalLength = 0;
     }
-    if (self.sendFileCurrentLength) {
-        self.sendFileCurrentLength = 0;
+    if (self.sendDataCurrentLength) {
+        self.sendDataCurrentLength = 0;
     }
 }
 
@@ -414,8 +534,8 @@ SafeBlockCall(self.actionCallBack,DV_ConnectSuccess,self,@{@"action":@"didConnec
 - (void)socket:(GCDAsyncSocket *)sock didWritePartialDataOfLength:(NSUInteger)partialLength tag:(long)tag
 {
     DVLog(@"didWritePartialDataOfLength");
-    self.sendFileCurrentLength += partialLength;
-    SafeBlockCall(self.writeDataCallBack,DV_DidWritePartialDataOfLength | self.sendDataType,self,@{@"fileTotalLength":[NSNumber numberWithUnsignedInteger:self.sendFileTotalLength],@"fileCurrentLength":[NSNumber numberWithUnsignedInteger:self.sendFileCurrentLength]},tag);
+    self.sendDataCurrentLength += partialLength;
+SafeBlockCall(self.writeDataCallBack,self.sendDataType,self,self.sendDataCurrentLength,self.sendDataTotalLength,tag);
 }
 
 /**

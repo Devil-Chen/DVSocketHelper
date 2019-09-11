@@ -9,14 +9,11 @@
 #import "ViewController.h"
 #import "DVSocketManager.h"
 #import "DVSocketConfig.h"
-#import "EasyImagePickerManager.h"
+#import "QuickImagePickerManager.h"
 #import "YYModel.h"
-#import "DVDataProgressInfo.h"
+#import "NSObject+QuickImagePicker.h"
 
 @interface ViewController ()
-{
-    EasyImagePickerManager *manager;
-}
 @property (weak, nonatomic) IBOutlet UITextField *txt_content;
 @property (weak, nonatomic) IBOutlet UIButton *btn_sure;
 @property (weak, nonatomic) IBOutlet UITextView *txt_readContent;
@@ -52,28 +49,26 @@
             [self showMessage:@"连接成功"];
         }
     })
-    .setReadDataCallBack(^(DVActionCode code,id socketManager,_Nullable id result,long tag){
-        NSString *read = [[NSString alloc] initWithData:result[@"data"] encoding:NSUTF8StringEncoding];
-        NSLog(@"read-->%@",read);
-        self.txt_readContent.text = [NSString stringWithFormat:@"%@\n服务器：%@",self.txt_readContent.text,read];
+    .setReadDataCallBack(^(DVActionCode code,id socketManager,NSUInteger partialLength,_Nullable id result,long tag){
+        if (code & DV_ReadDataSuccess) {
+            NSString *read = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
+            NSLog(@"read-->%@",read);
+            self.txt_readContent.text = [NSString stringWithFormat:@"%@\n服务器：%@",self.txt_readContent.text,read];
+        }
     })
-    .setWriteDataCallBack(^(DVActionCode code,id socketManager,id result,long tag){
+    .setWriteDataCallBack(^(DVActionCode code,id socketManager,NSUInteger partialLength,NSUInteger totalLength,long tag){
         
-        if ((code & DV_DidWritePartialDataOfLength) && (code & DV_WriteFileData)) {
-            DVDataProgressInfo *dataInfo = [DVDataProgressInfo yy_modelWithDictionary:result];
-            NSUInteger total = dataInfo.fileTotalLength;
-            NSUInteger current = dataInfo.fileCurrentLength;
-            NSLog(@"文件发送进度-->%.2f",current*1.0/total);
-        }else if((code & DV_WriteDataSuccess) && (code & DV_WriteFileData)){
+        if (code & DV_WriteFileData) {
+            NSLog(@"文件发送进度-->%.2f",partialLength*1.0/totalLength);
+        }else if(code & DV_WriteFileDataSuccess){
             NSLog(@"文件发送成功");
-        }else{
-            NSLog(@"write-->code:%ld\tresult:%@",(long)code,result);
+        }else  if(code & DV_WriteOtherDataSuccess){
+            NSLog(@"write-->code:%ld\tresult:%lu",(long)code,(unsigned long)totalLength);
             NSString *text = self.txt_content.text;
             self.txt_readContent.text = [NSString stringWithFormat:@"%@\n我：%@",self.txt_readContent.text,text];
             self.txt_content.text = @"";
         }
     }).connect();
-    
 }
 
 //显示提示信息
@@ -92,14 +87,14 @@
     
 }
 - (IBAction)sendImageData:(id)sender {
-    if (!manager) {
-        manager = [[EasyImagePickerManager alloc] initWithViewController:self];
-        [manager setDidSelectImageBlock:^(NSURL *image) {
-            NSData *data = [NSData dataWithContentsOfURL:image];
-            DVSocketManager.instance().writeData(data,123);
-        }];
-    }
-    [manager openPhoto];
+    QuickImagePickerManager.instance().quickPickerImage(self,NO,^(UIImage * _Nonnull image){
+        NSData *data = UIImageJPEGRepresentation(image,1);
+        DVSocketManager.instance().writeData(data,123);
+    });
+//    [self quickPickerImage:self allowsEditing:NO imageCallBack:^(UIImage * _Nonnull image) {
+//        NSData *data = UIImageJPEGRepresentation(image,1);
+//        DVSocketManager.instance().writeData(data,123);
+//    }];
     
 }
 

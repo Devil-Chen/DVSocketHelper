@@ -28,13 +28,13 @@ typedef NS_ENUM(NSUInteger, DVActionCode) {
     DV_DidAcceptNewSocket = 1 << 10,
     
     //DVWriteDataCallBack中回调
-    DV_DidWritePartialDataOfLength = 1 << 11,//回调时会与下面两个值其中一个组合使用
-    DV_WriteFileData = 1 << 12,//写文件数据
+    DV_WriteFileData = 1 << 11,//写文件数据
+    DV_WriteFileDataSuccess = 1 << 12,//写文件数据成功
     DV_WriteOtherData = 1 << 13,//写其它数据（字符串）
-    DV_WriteDataSuccess = 1 << 14,//写数据成功，回调时会与上面两个值其中一个组合使用
+    DV_WriteOtherDataSuccess = 1 << 14,//写数据成功
     
     //DVReadDataCallBack中回调
-    DV_DidReadPartialDataOfLength = 1 << 15,
+    DV_ReadData = 1 << 15,//读取数据
     DV_ReadDataSuccess = 1 << 16//读取数据成功
     
 };

@@ -16,9 +16,9 @@ typedef void(^DVErrorCallBack)(DVActionCode code,NSString *msg);
 //非错误、读取数据、写数据之外的所有回调
 typedef void(^DVActionCallBack)(DVActionCode code,id socketManager,_Nullable id result);
 //读取数据回调
-typedef void(^DVReadDataCallBack)(DVActionCode code,id socketManager,_Nullable id result,long tag);
+typedef void(^DVReadDataCallBack)(DVActionCode code,id socketManager,NSUInteger partialLength,_Nullable id result,long tag);
 //写数据回调
-typedef void(^DVWriteDataCallBack)(DVActionCode code,id socketManager,_Nullable id result,long tag);
+typedef void(^DVWriteDataCallBack)(DVActionCode code,id socketManager,NSUInteger partialLength,NSUInteger totalLength,long tag);
 
 @interface DVSocketManager : NSObject
 
@@ -47,6 +47,14 @@ typedef void(^DVWriteDataCallBack)(DVActionCode code,id socketManager,_Nullable 
 
 //连接主机
 -(DVSocketManager *(^)(void)) connect;
+//作为主机监听端口
+-(DVSocketManager *(^)(uint16_t port)) acceptOnPort;
+//作为主机监听端口,端口为已设置的端口
+-(DVSocketManager *(^)(void)) acceptOnCurrentSettingPort;
+//作为主机监听端口
+-(DVSocketManager *(^)(NSString *interface,uint16_t port)) acceptOnInterface;
+//作为主机监听端口
+-(DVSocketManager *(^)(NSURL *url,uint16_t port)) acceptOnUrl;
 
 //读取数据(一次)
 -(DVSocketManager *(^)(long tag)) readData;
@@ -55,6 +63,10 @@ typedef void(^DVWriteDataCallBack)(DVActionCode code,id socketManager,_Nullable 
 
 //写数据（content为NSData时默认为二进制流）
 -(DVSocketManager *(^)(id content,long tag)) writeData;
+//写文件数据
+-(DVSocketManager *(^)(NSData *fileData,long tag)) writeFileWithData;
+//写文件数据
+-(DVSocketManager *(^)(NSString *path,long tag)) writeFileWithPath;
 
 //关闭连接
 -(DVSocketManager *(^)(void)) closeConnection;

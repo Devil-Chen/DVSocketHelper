@@ -1,95 +1,113 @@
-#import "EasyImagePickerManager.h"
+//
+//  NSObject+QuickImagePicker.m
+//  DVSocketHelper
+//
+//  Created by apple on 2019/9/11.
+//  Copyright © 2019 devil. All rights reserved.
+//
 
-@interface EasyImagePickerManager ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
+#import "NSObject+QuickImagePicker.h"
+#import <objc/runtime.h>
 
-///来源控制器
-@property (nonatomic,strong) UIViewController *orginViewController;
-/// 取出的图片
-@property (nonatomic,strong) UIImage *tempImage;
+static NSString *selectImageBlockKey = @"selectImageBlockKey";
+static NSString *imagePickerKey = @"imagePickerKey";
 
-@end
-
-@implementation EasyImagePickerManager
-
-- (UIImagePickerController *)imagePicker{
-    if (!_imagePicker) {
-        _imagePicker = [[UIImagePickerController alloc] init];
-        _imagePicker.delegate = self;
-        // 媒体类型
-        _imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
-    }
-    return _imagePicker;
+@implementation NSObject (QuickImagePicker)
+-(void) setSelectImageBlock:(SelectImageBlock)selectImageBlock
+{
+    objc_setAssociatedObject(self, &selectImageBlockKey, selectImageBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 
-- (instancetype)initWithViewController:(UIViewController *)VC{
-    self = [super init];
-    if (self) {
-        self.orginViewController = VC;
+-(SelectImageBlock) selectImageBlock
+{
+    return objc_getAssociatedObject(self, &selectImageBlockKey);
+}
+
+-(void) setImagePicker:(UIImagePickerController *)imagePicker
+{
+    objc_setAssociatedObject(self, &imagePickerKey, imagePicker, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(UIImagePickerController *) imagePicker
+{
+    UIImagePickerController *pickerController = objc_getAssociatedObject(self, &imagePickerKey);
+    if (!pickerController) {
+        pickerController = [[UIImagePickerController alloc] init];
+        pickerController.delegate = self;
+        
+        objc_setAssociatedObject(self, &imagePickerKey, pickerController, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
-    return self;
+    return pickerController;
 }
 
 #pragma mark- 快速创建一个图片选择弹出窗
-- (void)quickAlertSheetPickerImage{
-    UIActionSheet *sheetView = [[UIActionSheet alloc] initWithTitle:@"选择图片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相册",@"拍照", nil];
-    [sheetView showInView:self.orginViewController.view];
+- (void)quickPickerImage:(UIViewController *)vct  allowsEditing:(BOOL)allowsEditing imageCallBack:(SelectImageBlock)selectImageBlock
+{
+    [self setSelectImageBlock:selectImageBlock];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"图片选择" message:@"选择获取图片的方式" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self openPhoto:vct allowsEditing:allowsEditing];
+    }];
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self openCamera:vct allowsEditing:allowsEditing];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alert addAction:action];
+    [alert addAction:action2];
+    [alert addAction:cancel];
+    [vct presentViewController:alert animated:YES completion:nil];
 }
-
-#pragma mark-<UIActionSheetDelegate>
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0) {
-        ///相册
-        [self openPhoto];
-    }else if (buttonIndex == 1){
-        /// 拍照
-        [self openCamera];
-    }
-}
-
 
 #pragma mark- 打开相机
-- (void)openCamera{
+- (void)openCamera:(UIViewController *)vct allowsEditing:(BOOL)allowsEditing;
+{
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         return ;
     }
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self.orginViewController presentViewController: self.imagePicker animated:YES completion:^{
+    self.imagePicker.allowsEditing = allowsEditing;
+    [vct presentViewController: self.imagePicker animated:YES completion:^{
         NSLog(@"相机");
     }];
 }
 
 #pragma mark- 打开相册
-- (void)openPhoto{
+- (void)openPhoto:(UIViewController *)vct allowsEditing:(BOOL)allowsEditing;
+{
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         return ;
     }
     self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self.orginViewController presentViewController: self.imagePicker animated:YES completion:^{
+    self.imagePicker.allowsEditing = allowsEditing;
+    [vct presentViewController: self.imagePicker animated:YES completion:^{
         NSLog(@"相册");
     }];
 }
 
-
 #pragma mark- <UIImagePickerControllerDelegate>
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    UIImage *orginImage = info[UIImagePickerControllerOriginalImage];
-    self.tempImage = [self fixOrientation: orginImage];
+    UIImage *orginImage;
+    if (picker.allowsEditing) {
+        orginImage = info[UIImagePickerControllerEditedImage];
+    }else{
+        orginImage = info[UIImagePickerControllerOriginalImage];
+    }
+    
+    UIImage *fixImage = [self fixOrientation: orginImage];
     
     /// 选择的图片
-    if(self.didSelectImageBlock){
-        self.didSelectImageBlock(info[UIImagePickerControllerImageURL]);
+    if(self.selectImageBlock){
+        self.selectImageBlock(fixImage);
     }
     ///拍到的照片顺带保存到相册
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        [self saveImageToSystemPhotosAlbum];
+        UIImageWriteToSavedPhotosAlbum(fixImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }
     [picker dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark- 拍的照片保存到系统相册
-- (void)saveImageToSystemPhotosAlbum{
-    UIImageWriteToSavedPhotosAlbum(self.tempImage, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 
 /// 系统指定的回调方法
